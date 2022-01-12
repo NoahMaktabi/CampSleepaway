@@ -20,7 +20,7 @@ namespace Persistence
         public DbSet<Camper> Campers { get; set; }
         public DbSet<Counselor> Counselors { get; set; }
         public DbSet<NextOfKin> NextOfKins { get; set; }
-        public CamperRegistry CamperRegistry { get; set; }
+        public DbSet<CamperRegistry> CamperRegistries { get; set; }
         public DbSet<CounselorRegistry> CounselorRegistries { get; set; }
 
 
