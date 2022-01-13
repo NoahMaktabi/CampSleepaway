@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="MenuSystem\" />
+    <Folder Include="MenuSystem\SubMenus\" />
   </ItemGroup>
 
   <ItemGroup>

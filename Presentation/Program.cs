@@ -1,20 +1,14 @@
-﻿using System;
-using System.Threading.Tasks;
-using Application;
-using Persistence;
-using Persistence.Repository;
+﻿using System.Threading.Tasks;
+using Presentation.MenuSystem;
 
 namespace Presentation
 {
     internal class Program
     {
-        static async Task Main(string[] args)
+        private static async Task Main(string[] args)
         {
-            var dataContext = new DataContext();
-            var camperRepository = new CamperRepository(dataContext);
-            var report = new Report(camperRepository);
-
-            Console.WriteLine(await  report.GetAllCampersByCounselor());
+            var menu = new MainMenu();
+            await menu.Run();
         }
     }
 }
