@@ -12,6 +12,7 @@ namespace Persistence
         public List<Camper> Campers { get; set; }
         public List<CounselorRegistry> CounselorRegistries { get; set; }
         public List<CamperRegistry> CamperRegistries { get; set; }
+        public List<Visit> Visits { get; set; }
 
         public SeedData()
         {
@@ -21,9 +22,10 @@ namespace Persistence
             Campers = PopulateCampers();
             CamperRegistries = PopulateCamperRegistries();
             CounselorRegistries = PopulateCounselorRegistries();
+            Visits = PopulateVisitorRegistries();
         }
 
-        private List<Cabin> PopulateCabins()
+        private static List<Cabin> PopulateCabins()
         {
             var list = new List<Cabin>
             {
@@ -36,7 +38,7 @@ namespace Persistence
             return list;
         }
 
-        private List<Counselor> PopulateCounselors()
+        private static List<Counselor> PopulateCounselors()
         {
             var list = new List<Counselor>
             {
@@ -49,7 +51,7 @@ namespace Persistence
             return list;
         }
 
-        private List<Camper> PopulateCampers()
+        private static List<Camper> PopulateCampers()
         {
             return new List<Camper>
             {
@@ -74,7 +76,7 @@ namespace Persistence
             };
         }
 
-        private List<NextOfKin> PopulateNextOfKins()
+        private static List<NextOfKin> PopulateNextOfKins()
         {
             return new List<NextOfKin>()
             {
@@ -99,7 +101,7 @@ namespace Persistence
             };
         }
 
-        private List<CounselorRegistry> PopulateCounselorRegistries()
+        private static List<CounselorRegistry> PopulateCounselorRegistries()
         {
             return new List<CounselorRegistry>()
             {
@@ -111,7 +113,7 @@ namespace Persistence
             };
         }
 
-        private List<CamperRegistry> PopulateCamperRegistries()
+        private static List<CamperRegistry> PopulateCamperRegistries()
         {
             return new List<CamperRegistry>()
             {
@@ -133,6 +135,16 @@ namespace Persistence
                 new CamperRegistry{Id = 16, CabinId = 4, CamperId = 16, CheckIn = DateTime.Now, CheckOut = DateTime.Now.AddMonths(3)},
                 new CamperRegistry{Id = 17, CabinId = 5, CamperId = 17, CheckIn = DateTime.Now, CheckOut = DateTime.Now.AddMonths(3)},
                 new CamperRegistry{Id = 18, CabinId = 5, CamperId = 18, CheckIn = DateTime.Now, CheckOut = DateTime.Now.AddMonths(3)},
+            };
+        }
+
+        private static List<Visit> PopulateVisitorRegistries()
+        {
+            return new List<Visit>()
+            {
+                new Visit{Id = 1, CamperId = 1, StartTime = DateTime.Now, EndTime = DateTime.Now.AddHours(2), VisitorId = 1},
+                new Visit{Id = 2, CamperId = 2, StartTime = DateTime.Now, EndTime = DateTime.Now.AddHours(1), VisitorId = 2},
+                new Visit{Id = 3, CamperId = 3, StartTime = DateTime.Now, EndTime = DateTime.Now.AddHours(3), VisitorId = 3},
             };
         }
     }

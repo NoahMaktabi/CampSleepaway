@@ -148,14 +148,14 @@ namespace Persistence.Migrations
 
             migrationBuilder.InsertData(
                 table: "Cabins",
-                columns: new[] { "Id", "CounselorId", "Name", "CounselorId" },
+                columns: new[] { "Id", "Name", "CounselorId" },
                 values: new object[,]
                 {
-                    { 1, 0, "First", 1 },
-                    { 2, 0, "Second", 2 },
-                    { 3, 0, "Third", 3 },
-                    { 4, 0, "Fourth", 4 },
-                    { 5, 0, "Fifth", 5 }
+                    { 1, "First", 1 },
+                    { 2, "Second", 2 },
+                    { 3, "Third", 3 },
+                    { 4, "Fourth", 4 },
+                    { 5, "Fifth", 5 }
                 });
 
             migrationBuilder.InsertData(

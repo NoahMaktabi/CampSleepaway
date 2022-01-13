@@ -1,4 +1,5 @@
-﻿using Domain;
+﻿using System.Security.Cryptography.X509Certificates;
+using Domain;
 using Microsoft.EntityFrameworkCore;
 
 namespace Persistence
@@ -22,6 +23,7 @@ namespace Persistence
         public DbSet<NextOfKin> NextOfKins { get; set; }
         public DbSet<CamperRegistry> CamperRegistries { get; set; }
         public DbSet<CounselorRegistry> CounselorRegistries { get; set; }
+        public DbSet<Visit> Visits { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -38,12 +40,19 @@ namespace Persistence
             modelBuilder.Entity<Counselor>().HasOne(c => c.Cabin).WithOne(c => c.Counselor).HasForeignKey("Cabin");
             modelBuilder.Entity<Cabin>().HasOne(c => c.Counselor).WithOne(c => c.Cabin).HasForeignKey("Counselor");
 
+            modelBuilder.Entity<Visit>().HasOne(v => v.Visitor).WithMany().OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<Visit>().HasOne(c => c.Camper).WithMany().OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<Visit>().Property(x => x.StartTime).IsRequired();
+            modelBuilder.Entity<Visit>().Property(x => x.EndTime).IsRequired();
+
             modelBuilder.Entity<Cabin>().HasData(seed.Cabins);
             modelBuilder.Entity<Camper>().HasData(seed.Campers);
             modelBuilder.Entity<Counselor>().HasData(seed.Counselors);
             modelBuilder.Entity<NextOfKin>().HasData(seed.NextOfKins);
             modelBuilder.Entity<CamperRegistry>().HasData(seed.CamperRegistries);
             modelBuilder.Entity<CounselorRegistry>().HasData(seed.CounselorRegistries);
+            modelBuilder.Entity<Visit>().HasData(seed.Visits);
+
         }
 
 
