@@ -18,6 +18,7 @@ namespace Persistence.Repository
         {
             return await _context.Campers
                 .Include(c => c.Cabin)
+                .ThenInclude(x => x.Counselor)
                 .Include(x => x.NextOfKins)
                 .ToListAsync();
         }
@@ -26,6 +27,7 @@ namespace Persistence.Repository
         {
             return await _context.Campers
                 .Include(c => c.Cabin)
+                .ThenInclude(x => x.Counselor)
                 .Include(x => x.NextOfKins)
                 .FirstOrDefaultAsync(c => c.Id == id);
         }
