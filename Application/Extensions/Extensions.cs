@@ -30,5 +30,12 @@ namespace Application.Extensions
             str += $"Campers registered: {cabin.Campers.Count} campers.\n------------------\n";
             return str;
         }
+
+        public static string CounselorInfoString(this Counselor counselor)
+        {
+            return $"ID: {counselor.Id}.\nName: {counselor.Name}.\nPhone: {counselor.PhoneNumber}.\n" +
+                      $"Assigned to cabin: {counselor.AssignedToCabin}.\nEmail: {counselor.Email}.\n" +
+                      $"Date of birth: {counselor.DateOfBirth.ToLongDateString()}.\n----------------\n";
+        }
     }
 }

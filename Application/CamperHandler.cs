@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Application.Extensions;
 using Domain;
+using Persistence;
 using Persistence.Repository;
 
 namespace Application
@@ -10,9 +11,9 @@ namespace Application
     {
         private readonly CamperRepository _repository;
 
-        public CamperHandler(CamperRepository repository)
+        public CamperHandler(DataContext context)
         {
-            _repository = repository;
+            _repository = new CamperRepository(context);
         }
 
         public async Task<string>GetAllCampers()
