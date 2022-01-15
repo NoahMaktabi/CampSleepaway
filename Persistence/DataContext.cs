@@ -37,7 +37,6 @@ namespace Persistence
             var seed = new SeedData();
             modelBuilder.Entity<CamperRegistry>().HasOne(c => c.Camper).WithOne().OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<CounselorRegistry>().HasOne(c => c.Counselor).WithOne().OnDelete(DeleteBehavior.NoAction);
-            modelBuilder.Entity<Cabin>().HasMany<Camper>().WithOne(x => x.Cabin).HasForeignKey(x => x.CabinId);
 
             modelBuilder.Entity<Visit>().HasOne(v => v.Visitor).WithMany().OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<Visit>().HasOne(c => c.Camper).WithMany().OnDelete(DeleteBehavior.NoAction);
