@@ -37,5 +37,15 @@ namespace Application.Extensions
                       $"Assigned to cabin: {counselor.AssignedToCabin}.\nEmail: {counselor.Email}.\n" +
                       $"Date of birth: {counselor.DateOfBirth.ToLongDateString()}.\n----------------\n";
         }
+
+        public static string NextOfKinInfoString(this NextOfKin nextOfKin)
+        {
+            return $"ID: {nextOfKin.Id}.\nName: {nextOfKin.Name}.\nPhone: {nextOfKin.PhoneNumber}.\n" +
+                   $"Email: {nextOfKin.Email}.\n" +
+                   $"Address: {nextOfKin.Address}.\n" +
+                   $"\tName of child(camper): {nextOfKin.Camper.Name}\n" +
+                   $"\nCurrently resident in cabin: {nextOfKin.Camper.CabinId}\n" +
+                   $"\n----------------\n";
+        }
     }
 }
