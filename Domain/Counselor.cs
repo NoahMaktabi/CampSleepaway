@@ -25,5 +25,7 @@ namespace Domain
         [Required]
         [DataType(DataType.Date)]
         public DateTime DateOfBirth { get; set; }
+
+        public bool AssignedToCabin { get; set; } = false;
     }
 }

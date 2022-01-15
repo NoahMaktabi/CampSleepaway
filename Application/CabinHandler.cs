@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Application.Extensions;
 using Domain;
 using Persistence;
@@ -10,13 +11,15 @@ namespace Application
     {
         private readonly CabinRepository _repository;
         private readonly CounselorRepository _counselorRepository;
-        private readonly CamperRepository _camperRepository;
+        private readonly CamperRegRepository _camperRegRepository;
+        private readonly CounselorRegRepository _counselorRegRepository;
 
         public CabinHandler(DataContext context)
         {
             _repository = new CabinRepository(context);
             _counselorRepository = new CounselorRepository(context);
-            _camperRepository = new CamperRepository(context);
+            _camperRegRepository = new CamperRegRepository(context);
+            _counselorRegRepository = new CounselorRegRepository(context);
         }
 
         public async Task<string> GetAllCabins()
@@ -59,6 +62,10 @@ namespace Application
             //await _camperRepository.Update(camper);
 
             cabin.Campers.Add(camper);
+
+            var successfulRegistry = await RegisterCamper(camper, cabin);
+            if (!successfulRegistry) return "The registration was not successful!";
+
             var result = await _repository.Update(cabin);
             return result
                 ? $"The camper {camper.Name} has been added to the cabin."
@@ -74,14 +81,80 @@ namespace Application
             if (cabin.Counselor != null)
                 return
                     "The cabin already has a registered counselor. If you wish to change the counselor then choose another alternativ from the menu!";
+            counselor.AssignedToCabin = true;
+            var counselorUpdatedSuccess = await _counselorRepository.Update(counselor);
+            if (!counselorUpdatedSuccess) return "There was a problem updating the counselor. Try again later";
 
             cabin.Counselor = counselor;
+
+            var successfulRegistry = await RegisterCounselor(counselor, cabin);
+            if (!successfulRegistry) return "The registration was not successful!";
 
             var result = await _repository.Update(cabin);
 
             return result
                 ? $"The counselor {counselor.Name} has been added to the cabin."
                 : "There was a problem, the counselor was not added to the cabin.";
+        }
+
+        public async Task<string> ChangeCabinCounselor(int cabinId, Counselor counselor)
+        {
+            var cabin = await _repository.FindById(cabinId);
+            if (cabin == null) return 
+                "The cabin was not found in the database";
+
+            if (cabin.Counselor == null)
+                return
+                    "The cabin does not have a counselor. Choose to assign a counselor to the cabin instead of change!";
+            var oldCounselor = cabin.Counselor;
+            oldCounselor.AssignedToCabin = false;
+            var counselorUpdatedSuccess = await _counselorRepository.Update(oldCounselor);
+            if (!counselorUpdatedSuccess) return "There was a problem updating the counselor. Try again later";
+
+            cabin.Counselor = counselor;
+
+            var successfulRegistry = await RegisterCounselor(counselor, cabin);
+            if (!successfulRegistry) return "The registration was not successful!";
+
+            await RegisterChangedCounselor(oldCounselor);
+
+            var result = await _repository.Update(cabin);
+
+            return result
+                ? $"The counselor {counselor.Name} has been added to the cabin."
+                : "There was a problem, the counselor was not added to the cabin.";
+        }
+
+        private async Task<bool> RegisterCamper(Camper camper, Cabin cabin)
+        {
+            var registry = new CamperRegistry
+            {
+                Camper = camper,
+                Cabin = cabin,
+                CheckIn = DateTime.Now,
+                CheckOut = DateTime.Now.AddMonths(3),
+            };
+            return await _camperRegRepository.Create(registry);
+        }
+
+        private async Task<bool> RegisterCounselor(Counselor counselor, Cabin cabin)
+        {
+            var registry = new CounselorRegistry
+            {
+                Cabin = cabin,
+                Counselor = counselor,
+                AssignmentStart = DateTime.Now,
+                AssignmentEnd = DateTime.Now.AddMonths(3),
+            };
+            return await _counselorRegRepository.Create(registry);
+        }
+
+        private async Task<bool> RegisterChangedCounselor(Counselor counselor)
+        {
+            var registry = await _counselorRegRepository.FindById(counselor.Id);
+            registry.AssignmentEnd = DateTime.Now;
+            registry.Notes = "The counselor has been changed to another";
+            return await _counselorRegRepository.Update(registry);
         }
     }
 }
