@@ -55,8 +55,8 @@ namespace Application
             if (cabin.Counselor == null)
                 return
                     "The cabin does not have a registered counselor. You have to register a counselor first before adding campers";
-            camper.Cabin = cabin;
-            await _camperRepository.Update(camper);
+            //camper.Cabin = cabin;
+            //await _camperRepository.Update(camper);
 
             cabin.Campers.Add(camper);
             var result = await _repository.Update(cabin);
@@ -75,7 +75,6 @@ namespace Application
                 return
                     "The cabin already has a registered counselor. If you wish to change the counselor then choose another alternativ from the menu!";
 
-            await _counselorRepository.Update(counselor);
             cabin.Counselor = counselor;
 
             var result = await _repository.Update(cabin);

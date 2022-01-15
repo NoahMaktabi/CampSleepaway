@@ -53,8 +53,7 @@ namespace Persistence.Migrations
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    CabinId = table.Column<int>(type: "int", nullable: false),
-                    CabinId1 = table.Column<int>(type: "int", nullable: true)
+                    CabinId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -65,12 +64,6 @@ namespace Persistence.Migrations
                         principalTable: "Cabins",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Campers_Cabins_CabinId1",
-                        column: x => x.CabinId1,
-                        principalTable: "Cabins",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -204,27 +197,27 @@ namespace Persistence.Migrations
 
             migrationBuilder.InsertData(
                 table: "Campers",
-                columns: new[] { "Id", "CabinId", "CabinId1", "DateOfBirth", "Name", "PhoneNumber" },
+                columns: new[] { "Id", "CabinId", "DateOfBirth", "Name", "PhoneNumber" },
                 values: new object[,]
                 {
-                    { 1, 1, null, new DateTime(2012, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6243), "Niklas", "0711254895" },
-                    { 17, 5, null, new DateTime(2011, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6554), "Rachel", "0711254895" },
-                    { 16, 4, null, new DateTime(2012, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6551), "Ross", "0711254895" },
-                    { 15, 4, null, new DateTime(2011, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6547), "Howard", "0711254895" },
-                    { 14, 4, null, new DateTime(2010, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6544), "Leo", "0711254895" },
-                    { 13, 4, null, new DateTime(2011, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6541), "Per", "0711254895" },
-                    { 12, 3, null, new DateTime(2009, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6538), "Silvio", "0711254895" },
-                    { 11, 3, null, new DateTime(2010, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6535), "John", "0711254895" },
-                    { 18, 5, null, new DateTime(2013, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6558), "Jakob", "0711254895" },
-                    { 9, 3, null, new DateTime(2011, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6528), "Paul", "0711254895" },
-                    { 10, 3, null, new DateTime(2011, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6532), "Mikael", "0711254895" },
-                    { 8, 2, null, new DateTime(2012, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6525), "Frida", "0711254895" },
-                    { 7, 2, null, new DateTime(2013, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6522), "Erik", "0711254895" },
-                    { 6, 2, null, new DateTime(2014, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6519), "Ahmed", "0711254895" },
-                    { 5, 2, null, new DateTime(2013, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6514), "Anders", "0711254895" },
-                    { 4, 1, null, new DateTime(2012, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6510), "Paula", "0711254895" },
-                    { 3, 1, null, new DateTime(2010, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6507), "Lina", "0711254895" },
-                    { 2, 1, null, new DateTime(2011, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6498), "Maja", "0711254895" }
+                    { 1, 1, new DateTime(2012, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6243), "Niklas", "0711254895" },
+                    { 17, 5, new DateTime(2011, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6554), "Rachel", "0711254895" },
+                    { 16, 4, new DateTime(2012, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6551), "Ross", "0711254895" },
+                    { 15, 4, new DateTime(2011, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6547), "Howard", "0711254895" },
+                    { 14, 4, new DateTime(2010, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6544), "Leo", "0711254895" },
+                    { 13, 4,  new DateTime(2011, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6541), "Per", "0711254895" },
+                    { 12, 3,  new DateTime(2009, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6538), "Silvio", "0711254895" },
+                    { 11, 3, new DateTime(2010, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6535), "John", "0711254895" },
+                    { 18, 5, new DateTime(2013, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6558), "Jakob", "0711254895" },
+                    { 9, 3, new DateTime(2011, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6528), "Paul", "0711254895" },
+                    { 10, 3, new DateTime(2011, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6532), "Mikael", "0711254895" },
+                    { 8, 2, new DateTime(2012, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6525), "Frida", "0711254895" },
+                    { 7, 2, new DateTime(2013, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6522), "Erik", "0711254895" },
+                    { 6, 2, new DateTime(2014, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6519), "Ahmed", "0711254895" },
+                    { 5, 2, new DateTime(2013, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6514), "Anders", "0711254895" },
+                    { 4, 1, new DateTime(2012, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6510), "Paula", "0711254895" },
+                    { 3, 1, new DateTime(2010, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6507), "Lina", "0711254895" },
+                    { 2, 1, new DateTime(2011, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6498), "Maja", "0711254895" }
                 });
 
             migrationBuilder.InsertData(
@@ -325,10 +318,6 @@ namespace Persistence.Migrations
                 table: "Campers",
                 column: "CabinId");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Campers_CabinId1",
-                table: "Campers",
-                column: "CabinId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CounselorRegistries_CabinId",
