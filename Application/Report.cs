@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Application.Extensions;
 using Domain;
 using Microsoft.EntityFrameworkCore.Internal;
+using Persistence;
 using Persistence.Repository;
 
 namespace Application
@@ -11,9 +12,9 @@ namespace Application
     {
         private readonly CamperRepository _camperRepository;
 
-        public Report(CamperRepository camperRepository)
+        public Report(DataContext context)
         {
-            _camperRepository = camperRepository;
+            _camperRepository = new CamperRepository(context);
         }
 
         public async Task<string> GetAllCampersByCabin()

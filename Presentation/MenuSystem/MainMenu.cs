@@ -8,8 +8,8 @@ namespace Presentation.MenuSystem
 {
     public class MainMenu
     {
-        private readonly DataContext _context;
         private readonly CamperRepository _camperRepository;
+        private readonly DataContext _context;
 
         public MainMenu()
         {
@@ -26,6 +26,11 @@ Welcome to CampAway.What would you like to do?
             string[] options =
             {
                 "Reports",
+                "Cabins",
+                "Campers",
+                "Counselors",
+                "Next of kins",
+                "Visits",
                 "Exit",
             };
             var menu = new MenuBuilder(prompt, options);
@@ -36,6 +41,23 @@ Welcome to CampAway.What would you like to do?
                     await ShowReportMenu();
                     break;
                 case 1:
+                    
+                    break;
+                case 2:
+                    await ShowCamperMenu();
+                    break;
+                case 3:
+
+                    break;
+
+                case 4:
+
+                    break;
+
+                case 5:
+
+                    break;
+                case 6:
                     ExitApp();
                     break;
             }
@@ -43,7 +65,16 @@ Welcome to CampAway.What would you like to do?
 
         private async Task ShowReportMenu()
         {
-            var menu = new ReportMenu(_context, _camperRepository);
+            var menu = new ReportMenu(_context);
+            while (! await menu.Run())
+            {
+                await this.Run();
+            }
+        }
+
+        private async Task ShowCamperMenu()
+        {
+            var menu = new CamberMenu(_context);
             while (! await menu.Run())
             {
                 await this.Run();

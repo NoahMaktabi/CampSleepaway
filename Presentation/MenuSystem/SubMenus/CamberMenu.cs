@@ -1,28 +1,24 @@
 ﻿using System;
-using System.Reflection.Metadata.Ecma335;
-using Persistence;
-using Persistence.Repository;
 using System.Threading.Tasks;
 using Application;
+using Persistence;
 
 namespace Presentation.MenuSystem.SubMenus
 {
-    public class ReportMenu
+    public class CamberMenu
     {
-        private readonly Report _report;
-
-        public ReportMenu(DataContext context)
+        private readonly CamperHandler _handler;
+        public CamberMenu(DataContext context)
         {
-            _report = new Report(context);
+            _handler = new CamperHandler(context);
         }
-
         public async Task<bool> Run()
         {
-            const string prompt = "Please choose which report you want to see";
+            const string prompt = "Please choose an option below:";
             var options = new string[]
             {
-                "Campers sorted by cabins",
-                "Campers sorted by counselors",
+                "Show all registered campers.",
+                "Show a specific camper by ID",
                 "Return to main menu",
             };
             var menu = new MenuBuilder(prompt, options);
@@ -31,18 +27,18 @@ namespace Presentation.MenuSystem.SubMenus
             switch (selectedIndex)
             {
                 case 0:
-                    result = await _report.GetAllCampersByCabin();
+                    result = await _handler.GetAllCampers();
                     break;
                 case 1:
-                    result = await _report.GetAllCampersByCounselor();
+
                     break;
+
                 case 2:
                     return false;
             }
-
             Console.WriteLine(result);
 
-            Console.WriteLine("Press any key to return to report menu...");
+            Console.WriteLine("Press any key to return to campers menu...");
             Console.ReadKey(true);
             await this.Run();
 
