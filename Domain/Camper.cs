@@ -18,8 +18,10 @@ namespace Domain
         [Required]
         [MaxLength(20, ErrorMessage = "The phone number is too long, max 20 letters")]
         public string PhoneNumber { get; set; }
+
         public Cabin Cabin { get; set; }
         public int CabinId { get; set; }
+
         public List<NextOfKin> NextOfKins { get; set; } = new List<NextOfKin>();
     }
 }

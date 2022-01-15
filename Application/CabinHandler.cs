@@ -74,7 +74,7 @@ namespace Application
             if (cabin.Counselor != null)
                 return
                     "The cabin already has a registered counselor. If you wish to change the counselor then choose another alternativ from the menu!";
-            counselor.Cabin = cabin;
+
             await _counselorRepository.Update(counselor);
             cabin.Counselor = counselor;
 

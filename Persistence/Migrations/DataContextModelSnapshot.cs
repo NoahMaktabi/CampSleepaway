@@ -36,6 +36,8 @@ namespace Persistence.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CounselorId");
+
                     b.ToTable("Cabins");
 
                     b.HasData(
@@ -81,6 +83,9 @@ namespace Persistence.Migrations
                     b.Property<int>("CabinId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("CabinId1")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("datetime2");
 
@@ -98,6 +103,8 @@ namespace Persistence.Migrations
 
                     b.HasIndex("CabinId");
 
+                    b.HasIndex("CabinId1");
+
                     b.ToTable("Campers");
 
                     b.HasData(
@@ -105,7 +112,7 @@ namespace Persistence.Migrations
                         {
                             Id = 1,
                             CabinId = 1,
-                            DateOfBirth = new DateTime(2012, 1, 13, 9, 26, 33, 368, DateTimeKind.Local).AddTicks(3780),
+                            DateOfBirth = new DateTime(2012, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6243),
                             Name = "Niklas",
                             PhoneNumber = "0711254895"
                         },
@@ -113,7 +120,7 @@ namespace Persistence.Migrations
                         {
                             Id = 2,
                             CabinId = 1,
-                            DateOfBirth = new DateTime(2011, 1, 13, 9, 26, 33, 368, DateTimeKind.Local).AddTicks(4096),
+                            DateOfBirth = new DateTime(2011, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6498),
                             Name = "Maja",
                             PhoneNumber = "0711254895"
                         },
@@ -121,7 +128,7 @@ namespace Persistence.Migrations
                         {
                             Id = 3,
                             CabinId = 1,
-                            DateOfBirth = new DateTime(2010, 1, 13, 9, 26, 33, 368, DateTimeKind.Local).AddTicks(4107),
+                            DateOfBirth = new DateTime(2010, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6507),
                             Name = "Lina",
                             PhoneNumber = "0711254895"
                         },
@@ -129,7 +136,7 @@ namespace Persistence.Migrations
                         {
                             Id = 4,
                             CabinId = 1,
-                            DateOfBirth = new DateTime(2012, 1, 13, 9, 26, 33, 368, DateTimeKind.Local).AddTicks(4111),
+                            DateOfBirth = new DateTime(2012, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6510),
                             Name = "Paula",
                             PhoneNumber = "0711254895"
                         },
@@ -137,7 +144,7 @@ namespace Persistence.Migrations
                         {
                             Id = 5,
                             CabinId = 2,
-                            DateOfBirth = new DateTime(2013, 1, 13, 9, 26, 33, 368, DateTimeKind.Local).AddTicks(4116),
+                            DateOfBirth = new DateTime(2013, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6514),
                             Name = "Anders",
                             PhoneNumber = "0711254895"
                         },
@@ -145,7 +152,7 @@ namespace Persistence.Migrations
                         {
                             Id = 6,
                             CabinId = 2,
-                            DateOfBirth = new DateTime(2014, 1, 13, 9, 26, 33, 368, DateTimeKind.Local).AddTicks(4123),
+                            DateOfBirth = new DateTime(2014, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6519),
                             Name = "Ahmed",
                             PhoneNumber = "0711254895"
                         },
@@ -153,7 +160,7 @@ namespace Persistence.Migrations
                         {
                             Id = 7,
                             CabinId = 2,
-                            DateOfBirth = new DateTime(2013, 1, 13, 9, 26, 33, 368, DateTimeKind.Local).AddTicks(4127),
+                            DateOfBirth = new DateTime(2013, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6522),
                             Name = "Erik",
                             PhoneNumber = "0711254895"
                         },
@@ -161,7 +168,7 @@ namespace Persistence.Migrations
                         {
                             Id = 8,
                             CabinId = 2,
-                            DateOfBirth = new DateTime(2012, 1, 13, 9, 26, 33, 368, DateTimeKind.Local).AddTicks(4131),
+                            DateOfBirth = new DateTime(2012, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6525),
                             Name = "Frida",
                             PhoneNumber = "0711254895"
                         },
@@ -169,7 +176,7 @@ namespace Persistence.Migrations
                         {
                             Id = 9,
                             CabinId = 3,
-                            DateOfBirth = new DateTime(2011, 1, 13, 9, 26, 33, 368, DateTimeKind.Local).AddTicks(4135),
+                            DateOfBirth = new DateTime(2011, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6528),
                             Name = "Paul",
                             PhoneNumber = "0711254895"
                         },
@@ -177,7 +184,7 @@ namespace Persistence.Migrations
                         {
                             Id = 10,
                             CabinId = 3,
-                            DateOfBirth = new DateTime(2011, 1, 13, 9, 26, 33, 368, DateTimeKind.Local).AddTicks(4140),
+                            DateOfBirth = new DateTime(2011, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6532),
                             Name = "Mikael",
                             PhoneNumber = "0711254895"
                         },
@@ -185,7 +192,7 @@ namespace Persistence.Migrations
                         {
                             Id = 11,
                             CabinId = 3,
-                            DateOfBirth = new DateTime(2010, 1, 13, 9, 26, 33, 368, DateTimeKind.Local).AddTicks(4144),
+                            DateOfBirth = new DateTime(2010, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6535),
                             Name = "John",
                             PhoneNumber = "0711254895"
                         },
@@ -193,7 +200,7 @@ namespace Persistence.Migrations
                         {
                             Id = 12,
                             CabinId = 3,
-                            DateOfBirth = new DateTime(2009, 1, 13, 9, 26, 33, 368, DateTimeKind.Local).AddTicks(4148),
+                            DateOfBirth = new DateTime(2009, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6538),
                             Name = "Silvio",
                             PhoneNumber = "0711254895"
                         },
@@ -201,7 +208,7 @@ namespace Persistence.Migrations
                         {
                             Id = 13,
                             CabinId = 4,
-                            DateOfBirth = new DateTime(2011, 1, 13, 9, 26, 33, 368, DateTimeKind.Local).AddTicks(4152),
+                            DateOfBirth = new DateTime(2011, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6541),
                             Name = "Per",
                             PhoneNumber = "0711254895"
                         },
@@ -209,7 +216,7 @@ namespace Persistence.Migrations
                         {
                             Id = 14,
                             CabinId = 4,
-                            DateOfBirth = new DateTime(2010, 1, 13, 9, 26, 33, 368, DateTimeKind.Local).AddTicks(4156),
+                            DateOfBirth = new DateTime(2010, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6544),
                             Name = "Leo",
                             PhoneNumber = "0711254895"
                         },
@@ -217,7 +224,7 @@ namespace Persistence.Migrations
                         {
                             Id = 15,
                             CabinId = 4,
-                            DateOfBirth = new DateTime(2011, 1, 13, 9, 26, 33, 368, DateTimeKind.Local).AddTicks(4159),
+                            DateOfBirth = new DateTime(2011, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6547),
                             Name = "Howard",
                             PhoneNumber = "0711254895"
                         },
@@ -225,7 +232,7 @@ namespace Persistence.Migrations
                         {
                             Id = 16,
                             CabinId = 4,
-                            DateOfBirth = new DateTime(2012, 1, 13, 9, 26, 33, 368, DateTimeKind.Local).AddTicks(4163),
+                            DateOfBirth = new DateTime(2012, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6551),
                             Name = "Ross",
                             PhoneNumber = "0711254895"
                         },
@@ -233,7 +240,7 @@ namespace Persistence.Migrations
                         {
                             Id = 17,
                             CabinId = 5,
-                            DateOfBirth = new DateTime(2011, 1, 13, 9, 26, 33, 368, DateTimeKind.Local).AddTicks(4167),
+                            DateOfBirth = new DateTime(2011, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6554),
                             Name = "Rachel",
                             PhoneNumber = "0711254895"
                         },
@@ -241,7 +248,7 @@ namespace Persistence.Migrations
                         {
                             Id = 18,
                             CabinId = 5,
-                            DateOfBirth = new DateTime(2013, 1, 13, 9, 26, 33, 368, DateTimeKind.Local).AddTicks(4172),
+                            DateOfBirth = new DateTime(2013, 1, 15, 12, 31, 51, 250, DateTimeKind.Local).AddTicks(6558),
                             Name = "Jakob",
                             PhoneNumber = "0711254895"
                         });
@@ -284,144 +291,144 @@ namespace Persistence.Migrations
                             Id = 1,
                             CabinId = 1,
                             CamperId = 1,
-                            CheckIn = new DateTime(2022, 1, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(3021),
-                            CheckOut = new DateTime(2022, 4, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(3284)
+                            CheckIn = new DateTime(2022, 1, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(3732),
+                            CheckOut = new DateTime(2022, 4, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(3965)
                         },
                         new
                         {
                             Id = 2,
                             CabinId = 1,
                             CamperId = 2,
-                            CheckIn = new DateTime(2022, 1, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(3525),
-                            CheckOut = new DateTime(2022, 4, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(3532)
+                            CheckIn = new DateTime(2022, 1, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(4223),
+                            CheckOut = new DateTime(2022, 4, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(4230)
                         },
                         new
                         {
                             Id = 3,
                             CabinId = 1,
                             CamperId = 3,
-                            CheckIn = new DateTime(2022, 1, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(3537),
-                            CheckOut = new DateTime(2022, 4, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(3540)
+                            CheckIn = new DateTime(2022, 1, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(4235),
+                            CheckOut = new DateTime(2022, 4, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(4238)
                         },
                         new
                         {
                             Id = 4,
                             CabinId = 1,
                             CamperId = 4,
-                            CheckIn = new DateTime(2022, 1, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(3543),
-                            CheckOut = new DateTime(2022, 4, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(3546)
+                            CheckIn = new DateTime(2022, 1, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(4243),
+                            CheckOut = new DateTime(2022, 4, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(4246)
                         },
                         new
                         {
                             Id = 5,
                             CabinId = 2,
                             CamperId = 5,
-                            CheckIn = new DateTime(2022, 1, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(3550),
-                            CheckOut = new DateTime(2022, 4, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(3553)
+                            CheckIn = new DateTime(2022, 1, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(4251),
+                            CheckOut = new DateTime(2022, 4, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(4253)
                         },
                         new
                         {
                             Id = 6,
                             CabinId = 2,
                             CamperId = 6,
-                            CheckIn = new DateTime(2022, 1, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(3559),
-                            CheckOut = new DateTime(2022, 4, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(3562)
+                            CheckIn = new DateTime(2022, 1, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(4260),
+                            CheckOut = new DateTime(2022, 4, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(4263)
                         },
                         new
                         {
                             Id = 7,
                             CabinId = 2,
                             CamperId = 7,
-                            CheckIn = new DateTime(2022, 1, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(3565),
-                            CheckOut = new DateTime(2022, 4, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(3568)
+                            CheckIn = new DateTime(2022, 1, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(4267),
+                            CheckOut = new DateTime(2022, 4, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(4270)
                         },
                         new
                         {
                             Id = 8,
                             CabinId = 2,
                             CamperId = 8,
-                            CheckIn = new DateTime(2022, 1, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(3572),
-                            CheckOut = new DateTime(2022, 4, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(3574)
+                            CheckIn = new DateTime(2022, 1, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(4273),
+                            CheckOut = new DateTime(2022, 4, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(4277)
                         },
                         new
                         {
                             Id = 9,
                             CabinId = 3,
                             CamperId = 9,
-                            CheckIn = new DateTime(2022, 1, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(3578),
-                            CheckOut = new DateTime(2022, 4, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(3580)
+                            CheckIn = new DateTime(2022, 1, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(4280),
+                            CheckOut = new DateTime(2022, 4, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(4283)
                         },
                         new
                         {
                             Id = 10,
                             CabinId = 3,
                             CamperId = 10,
-                            CheckIn = new DateTime(2022, 1, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(3585),
-                            CheckOut = new DateTime(2022, 4, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(3588)
+                            CheckIn = new DateTime(2022, 1, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(4288),
+                            CheckOut = new DateTime(2022, 4, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(4291)
                         },
                         new
                         {
                             Id = 11,
                             CabinId = 3,
                             CamperId = 11,
-                            CheckIn = new DateTime(2022, 1, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(3591),
-                            CheckOut = new DateTime(2022, 4, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(3594)
+                            CheckIn = new DateTime(2022, 1, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(4294),
+                            CheckOut = new DateTime(2022, 4, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(4297)
                         },
                         new
                         {
                             Id = 12,
                             CabinId = 3,
                             CamperId = 12,
-                            CheckIn = new DateTime(2022, 1, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(3597),
-                            CheckOut = new DateTime(2022, 4, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(3600)
+                            CheckIn = new DateTime(2022, 1, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(4300),
+                            CheckOut = new DateTime(2022, 4, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(4303)
                         },
                         new
                         {
                             Id = 13,
                             CabinId = 4,
                             CamperId = 13,
-                            CheckIn = new DateTime(2022, 1, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(3603),
-                            CheckOut = new DateTime(2022, 4, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(3606)
+                            CheckIn = new DateTime(2022, 1, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(4307),
+                            CheckOut = new DateTime(2022, 4, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(4309)
                         },
                         new
                         {
                             Id = 14,
                             CabinId = 4,
                             CamperId = 14,
-                            CheckIn = new DateTime(2022, 1, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(3610),
-                            CheckOut = new DateTime(2022, 4, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(3613)
+                            CheckIn = new DateTime(2022, 1, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(4312),
+                            CheckOut = new DateTime(2022, 4, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(4315)
                         },
                         new
                         {
                             Id = 15,
                             CabinId = 4,
                             CamperId = 15,
-                            CheckIn = new DateTime(2022, 1, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(3617),
-                            CheckOut = new DateTime(2022, 4, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(3619)
+                            CheckIn = new DateTime(2022, 1, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(4320),
+                            CheckOut = new DateTime(2022, 4, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(4321)
                         },
                         new
                         {
                             Id = 16,
                             CabinId = 4,
                             CamperId = 16,
-                            CheckIn = new DateTime(2022, 1, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(3623),
-                            CheckOut = new DateTime(2022, 4, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(3625)
+                            CheckIn = new DateTime(2022, 1, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(4324),
+                            CheckOut = new DateTime(2022, 4, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(4326)
                         },
                         new
                         {
                             Id = 17,
                             CabinId = 5,
                             CamperId = 17,
-                            CheckIn = new DateTime(2022, 1, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(3629),
-                            CheckOut = new DateTime(2022, 4, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(3632)
+                            CheckIn = new DateTime(2022, 1, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(4328),
+                            CheckOut = new DateTime(2022, 4, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(4330)
                         },
                         new
                         {
                             Id = 18,
                             CabinId = 5,
                             CamperId = 18,
-                            CheckIn = new DateTime(2022, 1, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(3637),
-                            CheckOut = new DateTime(2022, 4, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(3639)
+                            CheckIn = new DateTime(2022, 1, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(4334),
+                            CheckOut = new DateTime(2022, 4, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(4335)
                         });
                 });
 
@@ -436,9 +443,6 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
-
-                    b.Property<int>("CabinId")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("datetime2");
@@ -459,9 +463,6 @@ namespace Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CabinId")
-                        .IsUnique();
-
                     b.ToTable("Counselors");
 
                     b.HasData(
@@ -469,8 +470,7 @@ namespace Persistence.Migrations
                         {
                             Id = 1,
                             Address = "Storgatan10",
-                            CabinId = 1,
-                            DateOfBirth = new DateTime(1992, 1, 13, 9, 26, 33, 365, DateTimeKind.Local).AddTicks(398),
+                            DateOfBirth = new DateTime(1992, 1, 15, 12, 31, 51, 247, DateTimeKind.Local).AddTicks(6723),
                             Email = "counc1@th.com",
                             Name = "Anders Counselsson",
                             PhoneNumber = "0700545641"
@@ -479,8 +479,7 @@ namespace Persistence.Migrations
                         {
                             Id = 2,
                             Address = "Göteborgsvägen 2",
-                            CabinId = 2,
-                            DateOfBirth = new DateTime(1999, 1, 13, 9, 26, 33, 367, DateTimeKind.Local).AddTicks(3980),
+                            DateOfBirth = new DateTime(1999, 1, 15, 12, 31, 51, 249, DateTimeKind.Local).AddTicks(7526),
                             Email = "counc2@th.com",
                             Name = "Erik Test",
                             PhoneNumber = "0700274641"
@@ -489,8 +488,7 @@ namespace Persistence.Migrations
                         {
                             Id = 3,
                             Address = "Torggatan1",
-                            CabinId = 3,
-                            DateOfBirth = new DateTime(1996, 1, 13, 9, 26, 33, 367, DateTimeKind.Local).AddTicks(4017),
+                            DateOfBirth = new DateTime(1996, 1, 15, 12, 31, 51, 249, DateTimeKind.Local).AddTicks(7555),
                             Email = "counc3@th.com",
                             Name = "Johan Svart",
                             PhoneNumber = "0703545641"
@@ -499,8 +497,7 @@ namespace Persistence.Migrations
                         {
                             Id = 4,
                             Address = "Lillegatan4",
-                            CabinId = 4,
-                            DateOfBirth = new DateTime(1993, 1, 13, 9, 26, 33, 367, DateTimeKind.Local).AddTicks(4025),
+                            DateOfBirth = new DateTime(1993, 1, 15, 12, 31, 51, 249, DateTimeKind.Local).AddTicks(7560),
                             Email = "counc4@th.com",
                             Name = "Jimmie Svensson",
                             PhoneNumber = "0787445641"
@@ -509,8 +506,7 @@ namespace Persistence.Migrations
                         {
                             Id = 5,
                             Address = "Kunggatan3",
-                            CabinId = 5,
-                            DateOfBirth = new DateTime(1997, 1, 13, 9, 26, 33, 367, DateTimeKind.Local).AddTicks(4029),
+                            DateOfBirth = new DateTime(1997, 1, 15, 12, 31, 51, 249, DateTimeKind.Local).AddTicks(7563),
                             Email = "counc5@th.com",
                             Name = "Maja Andersson",
                             PhoneNumber = "0700543421"
@@ -552,40 +548,40 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            AssignmentEnd = new DateTime(2022, 4, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(7685),
-                            AssignmentStart = new DateTime(2022, 1, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(7431),
+                            AssignmentEnd = new DateTime(2022, 4, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(8454),
+                            AssignmentStart = new DateTime(2022, 1, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(8226),
                             CabinId = 1,
                             CounselorId = 1
                         },
                         new
                         {
                             Id = 2,
-                            AssignmentEnd = new DateTime(2022, 4, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(7929),
-                            AssignmentStart = new DateTime(2022, 1, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(7921),
+                            AssignmentEnd = new DateTime(2022, 4, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(8776),
+                            AssignmentStart = new DateTime(2022, 1, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(8770),
                             CabinId = 2,
                             CounselorId = 2
                         },
                         new
                         {
                             Id = 3,
-                            AssignmentEnd = new DateTime(2022, 4, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(7937),
-                            AssignmentStart = new DateTime(2022, 1, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(7934),
+                            AssignmentEnd = new DateTime(2022, 4, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(8782),
+                            AssignmentStart = new DateTime(2022, 1, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(8780),
                             CabinId = 3,
                             CounselorId = 3
                         },
                         new
                         {
                             Id = 4,
-                            AssignmentEnd = new DateTime(2022, 4, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(7943),
-                            AssignmentStart = new DateTime(2022, 1, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(7940),
+                            AssignmentEnd = new DateTime(2022, 4, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(8787),
+                            AssignmentStart = new DateTime(2022, 1, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(8785),
                             CabinId = 4,
                             CounselorId = 4
                         },
                         new
                         {
                             Id = 5,
-                            AssignmentEnd = new DateTime(2022, 4, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(7950),
-                            AssignmentStart = new DateTime(2022, 1, 13, 9, 26, 33, 369, DateTimeKind.Local).AddTicks(7947),
+                            AssignmentEnd = new DateTime(2022, 4, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(8791),
+                            AssignmentStart = new DateTime(2022, 1, 15, 12, 31, 51, 251, DateTimeKind.Local).AddTicks(8790),
                             CabinId = 5,
                             CounselorId = 5
                         });
@@ -822,35 +818,50 @@ namespace Persistence.Migrations
                         {
                             Id = 1,
                             CamperId = 1,
-                            EndTime = new DateTime(2022, 1, 13, 11, 26, 33, 370, DateTimeKind.Local).AddTicks(1343),
-                            StartTime = new DateTime(2022, 1, 13, 9, 26, 33, 370, DateTimeKind.Local).AddTicks(1092),
+                            EndTime = new DateTime(2022, 1, 15, 14, 31, 51, 252, DateTimeKind.Local).AddTicks(1665),
+                            StartTime = new DateTime(2022, 1, 15, 12, 31, 51, 252, DateTimeKind.Local).AddTicks(1472),
                             VisitorId = 1
                         },
                         new
                         {
                             Id = 2,
                             CamperId = 2,
-                            EndTime = new DateTime(2022, 1, 13, 10, 26, 33, 370, DateTimeKind.Local).AddTicks(1785),
-                            StartTime = new DateTime(2022, 1, 13, 9, 26, 33, 370, DateTimeKind.Local).AddTicks(1777),
+                            EndTime = new DateTime(2022, 1, 15, 13, 31, 51, 252, DateTimeKind.Local).AddTicks(2007),
+                            StartTime = new DateTime(2022, 1, 15, 12, 31, 51, 252, DateTimeKind.Local).AddTicks(2001),
                             VisitorId = 2
                         },
                         new
                         {
                             Id = 3,
                             CamperId = 3,
-                            EndTime = new DateTime(2022, 1, 13, 12, 26, 33, 370, DateTimeKind.Local).AddTicks(1792),
-                            StartTime = new DateTime(2022, 1, 13, 9, 26, 33, 370, DateTimeKind.Local).AddTicks(1789),
+                            EndTime = new DateTime(2022, 1, 15, 15, 31, 51, 252, DateTimeKind.Local).AddTicks(2012),
+                            StartTime = new DateTime(2022, 1, 15, 12, 31, 51, 252, DateTimeKind.Local).AddTicks(2010),
                             VisitorId = 3
                         });
+                });
+
+            modelBuilder.Entity("Domain.Cabin", b =>
+                {
+                    b.HasOne("Domain.Counselor", "Counselor")
+                        .WithMany()
+                        .HasForeignKey("CounselorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Counselor");
                 });
 
             modelBuilder.Entity("Domain.Camper", b =>
                 {
                     b.HasOne("Domain.Cabin", "Cabin")
-                        .WithMany("Campers")
+                        .WithMany()
                         .HasForeignKey("CabinId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("Domain.Cabin", null)
+                        .WithMany("Campers")
+                        .HasForeignKey("CabinId1");
 
                     b.Navigation("Cabin");
                 });
@@ -872,17 +883,6 @@ namespace Persistence.Migrations
                     b.Navigation("Cabin");
 
                     b.Navigation("Camper");
-                });
-
-            modelBuilder.Entity("Domain.Counselor", b =>
-                {
-                    b.HasOne("Domain.Cabin", "Cabin")
-                        .WithOne("Counselor")
-                        .HasForeignKey("Domain.Counselor", "CabinId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Cabin");
                 });
 
             modelBuilder.Entity("Domain.CounselorRegistry", b =>
@@ -937,8 +937,6 @@ namespace Persistence.Migrations
             modelBuilder.Entity("Domain.Cabin", b =>
                 {
                     b.Navigation("Campers");
-
-                    b.Navigation("Counselor");
                 });
 
             modelBuilder.Entity("Domain.Camper", b =>

@@ -25,9 +25,5 @@ namespace Domain
         [Required]
         [DataType(DataType.Date)]
         public DateTime DateOfBirth { get; set; }
-
-        [ForeignKey("CabinId")]
-        public Cabin Cabin { get; set; }
-        public int CabinId { get; set; }
     }
 }

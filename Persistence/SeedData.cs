@@ -42,11 +42,11 @@ namespace Persistence
         {
             var list = new List<Counselor>
             {
-                new Counselor {Id = 1, Name = "Anders Counselsson", CabinId = 1, Address = "Storgatan10", DateOfBirth = DateTime.Now.AddYears(-30), Email = "counc1@th.com", PhoneNumber = "0700545641"},
-                new Counselor {Id = 2, Name = "Erik Test", CabinId = 2, Address = "Göteborgsvägen 2", DateOfBirth = DateTime.Now.AddYears(-23), Email = "counc2@th.com", PhoneNumber = "0700274641"},
-                new Counselor {Id = 3, Name = "Johan Svart", CabinId = 3, Address = "Torggatan1", DateOfBirth = DateTime.Now.AddYears(-26), Email = "counc3@th.com", PhoneNumber = "0703545641"},
-                new Counselor {Id = 4, Name = "Jimmie Svensson", CabinId = 4, Address = "Lillegatan4", DateOfBirth = DateTime.Now.AddYears(-29), Email = "counc4@th.com", PhoneNumber = "0787445641"},
-                new Counselor {Id = 5, Name = "Maja Andersson", CabinId = 5, Address = "Kunggatan3", DateOfBirth = DateTime.Now.AddYears(-25), Email = "counc5@th.com", PhoneNumber = "0700543421"},
+                new Counselor {Id = 1, Name = "Anders Counselsson",  Address = "Storgatan10", DateOfBirth = DateTime.Now.AddYears(-30), Email = "counc1@th.com", PhoneNumber = "0700545641"},
+                new Counselor {Id = 2, Name = "Erik Test",  Address = "Göteborgsvägen 2", DateOfBirth = DateTime.Now.AddYears(-23), Email = "counc2@th.com", PhoneNumber = "0700274641"},
+                new Counselor {Id = 3, Name = "Johan Svart",  Address = "Torggatan1", DateOfBirth = DateTime.Now.AddYears(-26), Email = "counc3@th.com", PhoneNumber = "0703545641"},
+                new Counselor {Id = 4, Name = "Jimmie Svensson",  Address = "Lillegatan4", DateOfBirth = DateTime.Now.AddYears(-29), Email = "counc4@th.com", PhoneNumber = "0787445641"},
+                new Counselor {Id = 5, Name = "Maja Andersson", Address = "Kunggatan3", DateOfBirth = DateTime.Now.AddYears(-25), Email = "counc5@th.com", PhoneNumber = "0700543421"},
             };
             return list;
         }

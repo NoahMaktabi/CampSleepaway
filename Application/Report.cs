@@ -39,7 +39,7 @@ namespace Application
             var result = "";
             foreach (var counselorGroup in groupedCampers)
             {
-                result += $"\t\tCounselor name: {counselorGroup.Key.Name}\n\t\tCabin number: {counselorGroup.Key.CabinId}\n---------------\n";
+                result += $"\t\tCounselor name: {counselorGroup.Key.Name}\n---------------\n";
                 result = counselorGroup.Aggregate(result, (current, camper) => current + camper.CamperInfoString());
             }
             return result;
