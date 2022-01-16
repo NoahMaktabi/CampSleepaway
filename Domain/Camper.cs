@@ -20,7 +20,7 @@ namespace Domain
         public string PhoneNumber { get; set; }
 
         public Cabin Cabin { get; set; }
-        public int CabinId { get; set; }
+        public int? CabinId { get; set; }
 
         public List<NextOfKin> NextOfKins { get; set; } = new List<NextOfKin>();
     }

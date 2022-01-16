@@ -9,13 +9,25 @@ namespace Application.Extensions
             var result = $"Camper ID: {camper.Id}.\nCamper name: {camper.Name}.\n" +
                          $"Phone: {camper.PhoneNumber}\n" +
                          $"Birthday: {camper.DateOfBirth.ToLongDateString()}\n";
-            result += $"Cabin name: {camper.Cabin.Name}\n";
+            if (camper.Cabin != null)
+            {
+                result += $"Cabin name: {camper.Cabin.Name}\n";
+            }
+            else
+            {
+                result += "No cabin has been assigned!\n";
+            }
+            
             result += $"Next of kin:\n";
             foreach (var camperNextOfKin in camper.NextOfKins)
             {
                 result += $"\tName: {camperNextOfKin.Name}\n";
                 result += $"\tAddress: {camperNextOfKin.Address}\n";
                 result += $"\tPhone: {camperNextOfKin.PhoneNumber}\n----------------\n";
+            }
+            if (camper.NextOfKins.Count == 0)
+            {
+                result += "\tNo next of kin has been assigned!\n";
             }
             return result;
         }
