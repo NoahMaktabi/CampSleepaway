@@ -4,6 +4,75 @@ namespace Presentation.Input
 {
     public class InputHandler
     {
+
+        #region BirthdayHandler
+
+        public static DateTime GetBirthday()
+        {
+            var year = GetYear();
+            var month = GetMonth();
+            var day = GetDay(month);
+            return new DateTime(year, month, day);
+        }
+
+        private static int GetDay(int month)
+        {
+            Console.Clear();
+            Console.CursorVisible = true;
+            const string msg = "Please enter the day of birth";
+            var maxDaysInMonth = MaxDaysInMonth(month);
+            var invalidMsg = $"Invalid input. Please enter a number between 1 - {maxDaysInMonth}";
+            var day = GetIntFromUserInput(msg, invalidMsg, 1, maxDaysInMonth);
+            Console.CursorVisible = false;
+            return day;
+        }
+        private static int MaxDaysInMonth(int month)
+        {
+            var maxDays = month switch
+            {
+                1 => 31,
+                2 => 28,
+                3 => 31,
+                4 => 30,
+                5 => 31,
+                6 => 30,
+                7 => 31,
+                8 => 31,
+                9 => 30,
+                10 => 31,
+                11 => 30,
+                12 => 31,
+                _ => 0
+            };
+
+            return maxDays;
+        }
+        private static int GetMonth()
+        {
+            Console.Clear();
+            Console.CursorVisible = true;
+            const string msg = "Please enter the month of birth";
+            var invalidMsg = $"Invalid input. Please enter a number between 1 - 12";
+            var month = GetIntFromUserInput(msg, invalidMsg, 1, 12);
+            Console.CursorVisible = false;
+            return month;
+        }
+        private static int GetYear()
+        {
+            Console.Clear();
+            Console.CursorVisible = true;
+            const string msg = "Please enter the year of birth";
+            var invalidMsg = $"Invalid input. Please enter a number between 1930 - {DateTime.Now.Year}";
+            var year = GetIntFromUserInput(msg, invalidMsg, 1930, DateTime.Now.Year);
+            Console.CursorVisible = false;
+            return year;
+        }
+
+        #endregion
+
+
+        #region IntBoolStringHandlers
+
         /// <summary>
         /// Get boolean value from user by asking for Y or N input.
         /// You have to provide a msg to show the user, ex. Is your pet insured?
@@ -77,6 +146,10 @@ namespace Presentation.Input
         {
             return number >= min && number <= max;
         }
+
+        #endregion
+
+        
 
     }
 }
