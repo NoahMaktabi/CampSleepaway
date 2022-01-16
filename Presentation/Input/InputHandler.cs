@@ -4,6 +4,23 @@ namespace Presentation.Input
 {
     public class InputHandler
     {
+        /// <summary>
+        /// Asks the user to enter the id ID and returns ID as int. param predicate indicates what the ID is
+        /// referring to (camper, counselor, etc..) and action to do refers to crud operations (show, update, delete)
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <param name="actionToDo"></param>
+        /// <returns></returns>
+        public static int GetIdFromUser(string predicate, string actionToDo)
+        {
+            var msg = $"Please enter the ID of the {predicate.ToLower().Trim()} you want to {actionToDo.ToLower().Trim()}.";
+            const string invalidMsg = "You did not enter a valid ID. Please enter a positive number";
+            Console.Clear();
+            Console.CursorVisible = true;
+            var id = GetIntFromUserInput(msg, invalidMsg, 1, 1000);
+            Console.CursorVisible = false;
+            return id;
+        }
 
         #region BirthdayHandler
 
