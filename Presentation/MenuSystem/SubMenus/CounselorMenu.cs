@@ -84,7 +84,7 @@ namespace Presentation.MenuSystem.SubMenus
             Console.WriteLine("Press enter to change those details...");
             Console.ReadKey(true);
             counselor.Name = InputHandler.GetString("Please enter the new name of the counselor:");
-            counselor.PhoneNumber = InputHandler.GetString("Please enter the new phone number of the camper:");
+            counselor.PhoneNumber = InputHandler.GetString("Please enter the new phone number of the counselor:");
             counselor.Address = InputHandler.GetString("Please enter the address of the counselor:");
             counselor.Email = InputHandler.GetString("Please enter the email of the counselor:");
             counselor.DateOfBirth = InputHandler.GetBirthday();

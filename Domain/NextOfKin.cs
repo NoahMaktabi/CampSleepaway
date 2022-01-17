@@ -18,6 +18,6 @@ namespace Domain
         [EmailAddress]
         public string Email { get; set; }
         public Camper Camper { get; set; }
-        public int CamperId { get; set; }
+        public int? CamperId { get; set; }
     }
 }

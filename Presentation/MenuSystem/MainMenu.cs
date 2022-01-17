@@ -50,9 +50,8 @@ Welcome to CampAway.What would you like to do?
                     await ShowCounselorMenu();
                     break;
                 case 4:
-
+                    await ShowNextOfKinMenu();
                     break;
-
                 case 5:
 
                     break;
@@ -83,6 +82,15 @@ Welcome to CampAway.What would you like to do?
         private async Task ShowCounselorMenu()
         {
             var menu = new CounselorMenu(_context);
+            while (! await menu.Run())
+            {
+                await this.Run();
+            }
+        }
+
+        private async Task ShowNextOfKinMenu()
+        {
+            var menu = new NextOfKinMenu(_context);
             while (! await menu.Run())
             {
                 await this.Run();
