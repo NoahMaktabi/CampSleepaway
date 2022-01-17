@@ -19,7 +19,9 @@ namespace Application
 
         public async Task<string> GetAllCampersByCabin()
         {
-            var groupedCampers = (await _camperRepository.FindAll()).GroupBy(x => x.CabinId);
+            var groupedCampers = (await _camperRepository.FindAll())
+                .Where(c => c.Cabin != null)
+                .GroupBy(x => x.CabinId);
             var result = "";
             foreach (var cabinGroup in groupedCampers)
             {
@@ -31,18 +33,42 @@ namespace Application
                 }
                 result = cabinGroup.Aggregate(result, (current, camper) => current + camper.CamperInfoString());
             }
+
+            var campersWithNoCabins = (await _camperRepository.FindAll())
+                .Where(c => c.Cabin == null).ToList();
+            if (campersWithNoCabins.Count == 0) return result;
+
+            result += "\n--------\nCampers that are not assigned to cabins: \n";
+            campersWithNoCabins.ForEach(c =>
+            {
+                result += c.CamperInfoString();
+            });
+
             return result;
         }
 
         public async Task<string> GetAllCampersByCounselor()
         {
-            var groupedCampers = (await _camperRepository.FindAll()).GroupBy(x => x.Cabin.Counselor);
+            var groupedCampers = (await _camperRepository.FindAll())
+                .Where(c => c.Cabin != null)
+                .GroupBy(x => x.Cabin.Counselor);
             var result = "";
             foreach (var counselorGroup in groupedCampers)
             {
                 result += $"\t\tCounselor name: {counselorGroup.Key.Name}\n---------------\n";
                 result = counselorGroup.Aggregate(result, (current, camper) => current + camper.CamperInfoString());
             }
+
+            var campersWithNoCabins = (await _camperRepository.FindAll())
+                .Where(c => c.Cabin == null).ToList();
+            if (campersWithNoCabins.Count == 0) return result;
+
+            result += "\n--------\nCampers that are not assigned to cabins or counselors: \n";
+            campersWithNoCabins.ForEach(c =>
+            {
+                result += c.CamperInfoString();
+            });
+
             return result;
         }
     }

@@ -47,9 +47,8 @@ Welcome to CampAway.What would you like to do?
                     await ShowCamperMenu();
                     break;
                 case 3:
-
+                    await ShowCounselorMenu();
                     break;
-
                 case 4:
 
                     break;
@@ -81,6 +80,14 @@ Welcome to CampAway.What would you like to do?
             }
         }
 
+        private async Task ShowCounselorMenu()
+        {
+            var menu = new CounselorMenu(_context);
+            while (! await menu.Run())
+            {
+                await this.Run();
+            }
+        }
 
         private static void ExitApp()
         {
