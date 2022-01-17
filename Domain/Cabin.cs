@@ -15,6 +15,6 @@ namespace Domain
 
         [ForeignKey("CounselorId")]
         public Counselor Counselor { get; set; }
-        public int CounselorId { get; set; }
+        public int? CounselorId { get; set; }
     }
 }

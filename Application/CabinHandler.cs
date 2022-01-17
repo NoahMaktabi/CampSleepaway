@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Application.Extensions;
 using Domain;
@@ -33,6 +34,12 @@ namespace Application
                 str += c.CabinInfoString();
             });
             return str;
+        }
+
+        public async Task<string> GetCabinById(int id)
+        {
+            var cabin = await _repository.FindById(id);
+            return cabin == null ? "The cabin was not found in the database" : cabin.CabinInfoString();
         }
 
         public async Task<string> AddCabin(Cabin cabin)
@@ -111,12 +118,13 @@ namespace Application
             var counselorUpdatedSuccess = await _counselorRepository.Update(oldCounselor);
             if (!counselorUpdatedSuccess) return "There was a problem updating the counselor. Try again later";
 
+            counselor.AssignedToCabin = true;
             cabin.Counselor = counselor;
 
             var successfulRegistry = await RegisterCounselor(counselor, cabin);
             if (!successfulRegistry) return "The registration was not successful!";
 
-            await RegisterChangedCounselor(oldCounselor);
+            await RegisterChangedCounselor(oldCounselor, cabinId);
 
             var result = await _repository.Update(cabin);
 
@@ -149,9 +157,13 @@ namespace Application
             return await _counselorRegRepository.Create(registry);
         }
 
-        private async Task<bool> RegisterChangedCounselor(Counselor counselor)
+        private async Task<bool> RegisterChangedCounselor(Counselor counselor, int cabinId)
         {
-            var registry = await _counselorRegRepository.FindById(counselor.Id);
+            var list = await _counselorRegRepository.FindAll();
+            var registry = list.FirstOrDefault(c =>
+                c.CabinId == cabinId && c.CounselorId == counselor.Id && c.AssignmentEnd > DateTime.Now);
+            if (registry == null) return false;
+
             registry.AssignmentEnd = DateTime.Now;
             registry.Notes = "The counselor has been changed to another";
             return await _counselorRegRepository.Update(registry);

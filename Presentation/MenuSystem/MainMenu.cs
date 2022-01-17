@@ -41,7 +41,7 @@ Welcome to CampAway.What would you like to do?
                     await ShowReportMenu();
                     break;
                 case 1:
-                    
+                    await ShowCabinMenu();
                     break;
                 case 2:
                     await ShowCamperMenu();
@@ -64,6 +64,15 @@ Welcome to CampAway.What would you like to do?
         private async Task ShowReportMenu()
         {
             var menu = new ReportMenu(_context);
+            while (! await menu.Run())
+            {
+                await this.Run();
+            }
+        }
+
+        private async Task ShowCabinMenu()
+        {
+            var menu = new CabinMenu(_context);
             while (! await menu.Run())
             {
                 await this.Run();

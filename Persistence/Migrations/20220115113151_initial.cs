@@ -327,8 +327,7 @@ namespace Persistence.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_CounselorRegistries_CounselorId",
                 table: "CounselorRegistries",
-                column: "CounselorId",
-                unique: true);
+                column: "CounselorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_NextOfKins_CamperId",

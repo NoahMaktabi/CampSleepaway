@@ -34,7 +34,7 @@ namespace Application.Extensions
 
         public static string CabinInfoString(this Cabin cabin)
         {
-            var counselor = cabin.Counselor.Name;
+            var counselor = cabin.Counselor?.Name;
             if (cabin.Counselor == null)
                 counselor = "There is no counselor registered in this cabin";
             var str = $"Cabin number: {cabin.Id}\nName: {cabin.Name}\nRegistered counselor: {counselor}\n";

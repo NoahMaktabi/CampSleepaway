@@ -17,16 +17,12 @@ namespace Persistence.Repository
         public async Task<List<CounselorRegistry>> FindAll()
         {
             return await _context.CounselorRegistries
-                .Include(c => c.Cabin)
-                .Include(x => x.Counselor)
                 .ToListAsync();
         }
 
         public async Task<CounselorRegistry> FindById(int id)
         {
             return await _context.CounselorRegistries
-                .Include(c => c.Cabin)
-                .Include(x => x.Counselor)
                 .FirstOrDefaultAsync(c => c.Id == id);
         }
 

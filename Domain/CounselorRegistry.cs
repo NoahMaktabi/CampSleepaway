@@ -6,7 +6,6 @@ namespace Domain
     public class CounselorRegistry
     {
         public int Id { get; set; }
-        [Required] 
         public Counselor Counselor { get; set; }
         public int CounselorId { get; set; }
 
