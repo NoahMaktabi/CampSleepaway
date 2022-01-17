@@ -52,12 +52,22 @@ namespace Application.Extensions
 
         public static string NextOfKinInfoString(this NextOfKin nextOfKin)
         {
-            return $"ID: {nextOfKin.Id}.\nName: {nextOfKin.Name}.\nPhone: {nextOfKin.PhoneNumber}.\n" +
-                   $"Email: {nextOfKin.Email}.\n" +
-                   $"Address: {nextOfKin.Address}.\n" +
-                   $"\tName of child(camper): {nextOfKin.Camper.Name}\n" +
-                   $"\nCurrently resident in cabin: {nextOfKin.Camper.CabinId}\n" +
-                   $"\n----------------\n";
+            var str = $"ID: {nextOfKin.Id}.\nName: {nextOfKin.Name}.\nPhone: {nextOfKin.PhoneNumber}.\n" +
+                      $"Email: {nextOfKin.Email}.\n" +
+                      $"Address: {nextOfKin.Address}.\n";
+            if (nextOfKin.Camper != null)
+            {
+                str += $"\tName of child(camper): {nextOfKin.Camper.Name}\n" +
+                       $"\nCurrently resident in cabin: {nextOfKin.Camper.CabinId}\n";
+            }
+            else
+            {
+                str += "There is no child assigned to this next of kin! \n";
+            }
+                   
+            str += $"\n----------------\n";
+
+            return str;
         }
     }
 }
