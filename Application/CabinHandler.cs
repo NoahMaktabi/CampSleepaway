@@ -65,8 +65,6 @@ namespace Application
             if (cabin.Counselor == null)
                 return
                     "The cabin does not have a registered counselor. You have to register a counselor first before adding campers";
-            //camper.Cabin = cabin;
-            //await _camperRepository.Update(camper);
 
             cabin.Campers.Add(camper);
 
