@@ -53,7 +53,7 @@ Welcome to CampAway.What would you like to do?
                     await ShowNextOfKinMenu();
                     break;
                 case 5:
-
+                    await ShowVisitMenu();
                     break;
                 case 6:
                     ExitApp();
@@ -81,7 +81,7 @@ Welcome to CampAway.What would you like to do?
 
         private async Task ShowCamperMenu()
         {
-            var menu = new CamberMenu(_context);
+            var menu = new CamperMenu(_context);
             while (! await menu.Run())
             {
                 await this.Run();
@@ -100,6 +100,15 @@ Welcome to CampAway.What would you like to do?
         private async Task ShowNextOfKinMenu()
         {
             var menu = new NextOfKinMenu(_context);
+            while (! await menu.Run())
+            {
+                await this.Run();
+            }
+        }
+
+        private async Task ShowVisitMenu()
+        {
+            var menu = new VisitMenu(_context);
             while (! await menu.Run())
             {
                 await this.Run();

@@ -136,20 +136,20 @@ namespace Application.Extensions
             var str = string.Empty;
             if (visit.Id != 0)
             {
-                str += $"Visit ID: {visit.Id}.\n";
+                str += $"\n\n\n\t\tVisit ID: {visit.Id}.\n";
             }
             if (visit.Camper != null)
             {
-                str += $"Camper info: {visit.Camper.CamperInfoString()}.\n";
+                str += $"Camper info: {visit.Camper.CamperInfoString()}";
             }
             if (visit.Visitor != null)
             {
-                str += $"Visitor info: {visit.Visitor.NextOfKinInfoString()}.\n";
+                str += $"Visitor info: {visit.Visitor.NextOfKinInfoString()}";
             }
 
             str += $"Visit date: {visit.StartTime.ToLongDateString()}.\n";
             str +=
-                $"Visit time from: {visit.StartTime.ToShortTimeString()} - To: {visit.EndTime.ToShortTimeString().Length}.\n---------\n";
+                $"Visit time from: {visit.StartTime.ToShortTimeString()} - To: {visit.EndTime.ToShortTimeString()}.\n---------\n";
             return str;
         }
     }

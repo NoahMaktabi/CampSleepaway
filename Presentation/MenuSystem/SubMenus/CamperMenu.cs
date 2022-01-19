@@ -8,11 +8,11 @@ using Presentation.Input;
 
 namespace Presentation.MenuSystem.SubMenus
 {
-    public class CamberMenu
+    public class CamperMenu
     {
         private readonly CamperHandler _handler;
         private readonly CamperRepository _repository;
-        public CamberMenu(DataContext context)
+        public CamperMenu(DataContext context)
         {
             _handler = new CamperHandler(context);
             _repository = new CamperRepository(context);

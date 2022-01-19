@@ -18,6 +18,7 @@ namespace Persistence.Repository
         {
             return await _context.Visits
                 .Include(c => c.Camper)
+                .ThenInclude(c => c.Cabin)
                 .Include(x => x.Visitor)
                 .ToListAsync();
         }
