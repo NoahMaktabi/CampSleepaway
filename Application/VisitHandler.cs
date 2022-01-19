@@ -35,24 +35,12 @@ namespace Application
         public async Task<string> RegisterVisit(int camperId, int nextOfKinId, int visitLength)
         {
             var camper = await _camperRepository.FindById(camperId);
-            if (camper == null)
-                return "The camper was not found in the database";
 
             var nextOfKin = await _nextOfKinRepository.FindById(nextOfKinId);
-            if (nextOfKin == null)
-                return "The visitor was not found as a registered next of kin";
 
-            var camperVisitor = camper.NextOfKins.FirstOrDefault(v => v.Id == nextOfKinId);
-            if (camperVisitor == null)
-                return
-                    "The visitor is not allowed to visit this camper because the visitor is not registered as a next of kin for this camper";
-
-            if (visitLength > 3)
-                return "The length of the visit can not be longer than 3 hours";
-
-            var time = DateTime.Now.TimeOfDay;
-            if (time.Hours is < 10 or >= 20)
-                return "The visit is not possible at this time. Visit hours are between 10 A.M and 8 P.M!";
+            var success = ValidateInput(camper, nextOfKin, visitLength, out var errorMsg);
+            if (!success)
+                return errorMsg;
 
             var visit = new Visit
             {
@@ -76,6 +64,44 @@ namespace Application
             str += visit.VisitInfoString();
             return str;
 
+        }
+
+        private static bool ValidateInput(Camper camper, NextOfKin nextOfKin, int visitLength, out string error)
+        {
+            if (camper == null)
+            {
+                error = "The camper was not found in the database";
+                return false;
+            }
+
+            if (nextOfKin == null)
+            {
+                error = "The visitor was not found as a registered next of kin";
+                return false;
+            }
+
+            var camperVisitor = camper.NextOfKins.FirstOrDefault(v => v.Id == nextOfKin.Id);
+            if (camperVisitor == null)
+            {
+                error = "The visitor is not allowed to visit this camper because the visitor is not registered as a next of kin for this camper";
+                return false;
+            }
+
+            if (visitLength > 3)
+            {
+                error = "The length of the visit can not be longer than 3 hours";
+                return false;
+            }
+
+            var time = DateTime.Now.TimeOfDay;
+            if (time.Hours is < 10 or >= 20)
+            {
+                error = "The visit is not possible at this time. Visit hours are between 10 A.M and 8 P.M!";
+                return false;
+            }
+
+            error = string.Empty;
+            return true;
         }
     }
 }
