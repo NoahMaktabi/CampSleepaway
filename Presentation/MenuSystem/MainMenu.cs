@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Threading.Tasks;
 using Persistence;
 using Persistence.Repository;
@@ -8,19 +10,25 @@ namespace Presentation.MenuSystem
 {
     public class MainMenu
     {
-        private readonly CamperRepository _camperRepository;
         private readonly DataContext _context;
 
         public MainMenu()
         {
             _context = new DataContext();
-            _camperRepository = new CamperRepository(_context);
         }
 
         public async Task Run()
         {
-            var prompt = @"
-Welcome to CampAway.What would you like to do?
+            var prompt = @$"
+Welcome to CampAway.
+At the moment we have the following in the camp: 
+{_context.Cabins.Count()} Cabins.
+{_context.Counselors.Count()} Counselors.
+{_context.Campers.Count()} Campers.
+{(!_context.Cabins.Any(c => c.Counselor == null)
+    ? "All cabins have counselors" 
+    : $"There are {_context.Cabins.Count(c => c.Counselor == null) == 0} cabins with no counselors.")} 
+What would you like to do?
 (Use the arrow keys to cycle through options and press enter to select an option)
 ";
             string[] options =
