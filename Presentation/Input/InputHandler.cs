@@ -22,6 +22,21 @@ namespace Presentation.Input
             return id;
         }
 
+        /// <summary>
+        /// Asks the user to enter a number between 1 and 3. Parse the number into an int and return it.
+        /// </summary>
+        /// <returns>Valid int with value between 1 and 3</returns>
+        public static int GetVisitLength()
+        {
+            const string msg = "Please enter the length of your visit: (choose between 1, 2 or 3 hours.)";
+            const string invalidMsg = "You did not enter a valid number. Please enter a number between 1 - 3";
+            Console.Clear();
+            Console.CursorVisible = true;
+            var length = GetIntFromUserInput(msg,invalidMsg, 1, 3);
+            Console.CursorVisible = false;
+            return length;
+        }
+
         #region BirthdayHandler
 
         public static DateTime GetBirthday()
