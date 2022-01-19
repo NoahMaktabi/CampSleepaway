@@ -130,5 +130,27 @@ namespace Application.Extensions
 
             return str;
         }
+
+        public static string VisitInfoString(this Visit visit)
+        {
+            var str = string.Empty;
+            if (visit.Id != 0)
+            {
+                str += $"Visit ID: {visit.Id}.\n";
+            }
+            if (visit.Camper != null)
+            {
+                str += $"Camper info: {visit.Camper.CamperInfoString()}.\n";
+            }
+            if (visit.Visitor != null)
+            {
+                str += $"Visitor info: {visit.Visitor.NextOfKinInfoString()}.\n";
+            }
+
+            str += $"Visit date: {visit.StartTime.ToLongDateString()}.\n";
+            str +=
+                $"Visit time from: {visit.StartTime.ToShortTimeString()} - To: {visit.EndTime.ToShortTimeString().Length}.\n---------\n";
+            return str;
+        }
     }
 }
