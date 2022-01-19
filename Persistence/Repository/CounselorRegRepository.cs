@@ -17,6 +17,9 @@ namespace Persistence.Repository
         public async Task<List<CounselorRegistry>> FindAll()
         {
             return await _context.CounselorRegistries
+                .AsNoTracking()
+                .Include(c => c.Cabin)
+                .Include(c => c.Counselor)
                 .ToListAsync();
         }
 

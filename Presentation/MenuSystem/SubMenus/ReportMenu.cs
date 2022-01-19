@@ -23,6 +23,8 @@ namespace Presentation.MenuSystem.SubMenus
             {
                 "Campers sorted by cabins",
                 "Campers sorted by counselors",
+                "Show all camper registrations",
+                "Show all counselor registrations",
                 "Return to main menu",
             };
             var menu = new MenuBuilder(prompt, options);
@@ -37,6 +39,12 @@ namespace Presentation.MenuSystem.SubMenus
                     result = await _report.GetAllCampersByCounselor();
                     break;
                 case 2:
+                    result = await _report.GetCamperRegistrations();
+                    break;
+                case 3:
+                    result = await _report.GetCounselorRegistrations();
+                    break;
+                case 4:
                     return false;
             }
 

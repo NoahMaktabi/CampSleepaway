@@ -1,4 +1,5 @@
-﻿using Domain;
+﻿using System;
+using Domain;
 
 namespace Application.Extensions
 {
@@ -83,7 +84,18 @@ namespace Application.Extensions
             }
 
             str += $"Assignment start: {registry.AssignmentStart.ToLongDateString()}.\n";
-            str += $"Assignment start: {registry.AssignmentEnd.ToLongDateString()}.\n";
+            str += $"Assignment end: {registry.AssignmentEnd.ToLongDateString()}.\n";
+
+            var assignment = registry.AssignmentEnd.CompareTo(DateTime.Now);
+            if (assignment <= 0)
+            {
+                str += $"The assignment has already ended\n";
+            }
+            else
+            {
+                str += "The assignment is currently active\n";
+            }
+
             str += $"Notes: {registry.Notes ?? ""}\n-----------\n";
 
             return str;
@@ -104,6 +116,16 @@ namespace Application.Extensions
 
             str += $"Check in date: {registry.CheckIn.ToLongDateString()}.\n";
             str += $"Check out date: {registry.CheckOut.ToLongDateString()}.\n";
+
+            var assignment = registry.CheckOut.CompareTo(DateTime.Now);
+            if (assignment <= 0)
+            {
+                str += $"The assignment has already ended. The camper is no longer assigned to this cabin.\n";
+            }
+            else
+            {
+                str += "The assignment is currently active.\n";
+            }
             str += $"Notes: {registry.Notes ?? ""}\n-----------\n";
 
             return str;
