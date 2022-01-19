@@ -69,5 +69,44 @@ namespace Application.Extensions
 
             return str;
         }
+
+        public static string CounselorRegistryInfoString(this CounselorRegistry registry)
+        {
+            var str = $"ID: {registry.Id}. \n";
+            if (registry.Cabin != null)
+            {
+                str += $"Cabin: {registry.CabinId}.\n";
+            }
+            if (registry.Counselor != null)
+            {
+                str += $"Counselor: {registry.Counselor.Name}.\n";
+            }
+
+            str += $"Assignment start: {registry.AssignmentStart.ToLongDateString()}.\n";
+            str += $"Assignment start: {registry.AssignmentEnd.ToLongDateString()}.\n";
+            str += $"Notes: {registry.Notes ?? ""}\n-----------\n";
+
+            return str;
+        }
+
+        public static string CamperRegistryInfoString(this CamperRegistry registry)
+        {
+            var str = $"ID: {registry.Id}. \n";
+            if (registry.Cabin != null)
+            {
+                str += $"Cabin: {registry.CabinId}.\n";
+            }
+
+            if (registry.Camper != null)
+            {
+                str += $"Camper: {registry.Camper.Name}.\n";
+            }
+
+            str += $"Check in date: {registry.CheckIn.ToLongDateString()}.\n";
+            str += $"Check out date: {registry.CheckOut.ToLongDateString()}.\n";
+            str += $"Notes: {registry.Notes ?? ""}\n-----------\n";
+
+            return str;
+        }
     }
 }
