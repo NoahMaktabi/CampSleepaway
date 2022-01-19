@@ -11,10 +11,14 @@ namespace Application
     public class Report
     {
         private readonly CamperRepository _camperRepository;
+        private readonly CamperRegRepository _camperRegRepository;
+        private readonly CounselorRegRepository _counselorRegRepository;
 
         public Report(DataContext context)
         {
             _camperRepository = new CamperRepository(context);
+            _camperRegRepository = new CamperRegRepository(context);
+            _counselorRegRepository = new CounselorRegRepository(context);
         }
 
         public async Task<string> GetAllCampersByCabin()
@@ -70,6 +74,19 @@ namespace Application
             });
 
             return result;
+        }
+
+        public async Task<string> GetCamperRegistrations()
+        {
+            var list = await _camperRegRepository.FindAll();
+            return list.Aggregate(string.Empty, (current, camperReg) => current + camperReg.CamperRegistryInfoString());
+        }
+
+        public async Task<string> GetCounselorRegistrations()
+        {
+            var list = await _counselorRegRepository.FindAll();
+            return list.Aggregate(string.Empty,
+                (current, counselorReg) => current + counselorReg.CounselorRegistryInfoString());
         }
     }
 }
