@@ -23,6 +23,10 @@ namespace Application
             _counselorRegRepository = new CounselorRegRepository(context);
         }
 
+        /// <summary>
+        /// The method gets all cabins from the db and returns a string with info about the cabins
+        /// </summary>
+        /// <returns></returns>
         public async Task<string> GetAllCabins()
         {
             var list = await _repository.FindAll();
@@ -36,12 +40,22 @@ namespace Application
             return str;
         }
 
+        /// <summary>
+        /// Provided a valid cabinId. The method will return a string with info about the cabin
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<string> GetCabinById(int id)
         {
             var cabin = await _repository.FindById(id);
             return cabin == null ? "The cabin was not found in the database" : cabin.CabinInfoString();
         }
 
+        /// <summary>
+        /// Provided a cabin instance, the method will add the cabin to the db and return a string with info about the operation.
+        /// </summary>
+        /// <param name="cabin"></param>
+        /// <returns></returns>
         public async Task<string> AddCabin(Cabin cabin)
         {
             var result = await _repository.Create(cabin);
@@ -50,6 +64,12 @@ namespace Application
                 : "There was a problem, the cabin was not added to the database.";
         }
 
+        /// <summary>
+        /// Provided a cabinId and a camper instance. The method will add the camper to the cabin. It will check if there is 4 or more campers in the cabin before adding a new camper. 
+        /// </summary>
+        /// <param name="cabinId"></param>
+        /// <param name="camper"></param>
+        /// <returns>A string with info about the operation</returns>
         public async Task<string> AddCamperToCabin(int cabinId, Camper camper)
         {
             var cabin = await _repository.FindById(cabinId);
@@ -77,6 +97,12 @@ namespace Application
                 : "There was a problem, the camper was not added to the cabin.";
         }
 
+        /// <summary>
+        /// Provided a cabinId and a counselor instance. The method will add the counselor to the cabin. It will check if there is already a counselor in the cabin before adding a new counselor. 
+        /// </summary>
+        /// <param name="cabinId"></param>
+        /// <param name="counselor"></param>
+        /// <returns>A string with info about the operation</returns>
         public async Task<string> AddCounselorToCabin(int cabinId, Counselor counselor)
         {
             var cabin = await _repository.FindById(cabinId);
@@ -101,6 +127,7 @@ namespace Application
                 ? $"The counselor {counselor.Name} has been added to the cabin."
                 : "There was a problem, the counselor was not added to the cabin.";
         }
+
 
         public async Task<string> ChangeCabinCounselor(int cabinId, Counselor counselor)
         {

@@ -17,6 +17,10 @@ namespace Presentation.MenuSystem
             _context = new DataContext();
         }
 
+        /// <summary>
+        /// Runs the menu and presents options to choose from.
+        /// </summary>
+        /// <returns>Void</returns>
         public async Task Run()
         {
             var prompt = @$"
@@ -68,6 +72,7 @@ What would you like to do?
                     break;
             }
         }
+
 
         private async Task ShowReportMenu()
         {

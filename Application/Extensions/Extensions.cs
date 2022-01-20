@@ -5,6 +5,11 @@ namespace Application.Extensions
 {
     public static class Extensions
     {
+        /// <summary>
+        /// Provided a camper instance. The method returns a string with information about the camper
+        /// </summary>
+        /// <param name="camper"></param>
+        /// <returns></returns>
         public static string CamperInfoString(this Camper camper)
         {
             var result = $"Camper ID: {camper.Id}.\nCamper name: {camper.Name}.\n" +
@@ -33,6 +38,12 @@ namespace Application.Extensions
             return result;
         }
 
+        /// <summary>
+        /// Provided a cabin instance. The method returns a string with information about the cabin.
+        /// If there is no counselor assigned. The method will notice that in the returen string
+        /// </summary>
+        /// <param name="cabin"></param>
+        /// <returns></returns>
         public static string CabinInfoString(this Cabin cabin)
         {
             var counselor = cabin.Counselor?.Name;
@@ -44,6 +55,11 @@ namespace Application.Extensions
             return str;
         }
 
+        /// <summary>
+        /// Provided a counselor instance. The method returns a string with information about the counselor
+        /// </summary>
+        /// <param name="counselor"></param>
+        /// <returns></returns>
         public static string CounselorInfoString(this Counselor counselor)
         {
             return $"ID: {counselor.Id}.\nName: {counselor.Name}.\nPhone: {counselor.PhoneNumber}.\n" +
@@ -51,6 +67,11 @@ namespace Application.Extensions
                       $"Date of birth: {counselor.DateOfBirth.ToLongDateString()}.\n----------------\n";
         }
 
+        /// <summary>
+        /// Provided a nextOfKin instance. The method returns a string with information about the nextOfKin.
+        /// </summary>
+        /// <param name="nextOfKin"></param>
+        /// <returns></returns>
         public static string NextOfKinInfoString(this NextOfKin nextOfKin)
         {
             var str = $"ID: {nextOfKin.Id}.\nName: {nextOfKin.Name}.\nPhone: {nextOfKin.PhoneNumber}.\n" +
@@ -71,6 +92,11 @@ namespace Application.Extensions
             return str;
         }
 
+        /// <summary>
+        /// Provided a CounselorRegistry instance. The method returns a string with information about the CounselorRegistry.
+        /// </summary>
+        /// <param name="registry"></param>
+        /// <returns></returns>
         public static string CounselorRegistryInfoString(this CounselorRegistry registry)
         {
             var str = $"ID: {registry.Id}. \n";
@@ -101,6 +127,11 @@ namespace Application.Extensions
             return str;
         }
 
+        /// <summary>
+        /// Provided a CamperRegistry instance. The method returns a string with information about the CamperRegistry.
+        /// </summary>
+        /// <param name="registry"></param>
+        /// <returns></returns>
         public static string CamperRegistryInfoString(this CamperRegistry registry)
         {
             var str = $"ID: {registry.Id}. \n";
@@ -131,6 +162,11 @@ namespace Application.Extensions
             return str;
         }
 
+        /// <summary>
+        /// Provided a visit instance. The method returns a string with information about the visit.
+        /// </summary>
+        /// <param name="visit"></param>
+        /// <returns></returns>
         public static string VisitInfoString(this Visit visit)
         {
             var str = string.Empty;
