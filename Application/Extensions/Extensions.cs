@@ -80,7 +80,7 @@ namespace Application.Extensions
             if (nextOfKin.Camper != null)
             {
                 str += $"\tName of child(camper): {nextOfKin.Camper.Name}\n" +
-                       $"\nCurrently resident in cabin: {nextOfKin.Camper.CabinId}\n";
+                       $"\tCurrently resident in cabin: {nextOfKin.Camper.CabinId}\n";
             }
             else
             {
@@ -181,6 +181,12 @@ namespace Application.Extensions
             if (visit.Visitor != null)
             {
                 str += $"Visitor info: {visit.Visitor.NextOfKinInfoString()}";
+            }
+
+            if (visit?.Camper?.Cabin.Counselor != null)
+            {
+                str += $"The visit takes place in cabin number {visit.Camper.Cabin.Id}.\n";
+                str += $"Assigned counselor: {visit.Camper.Cabin.Counselor.Name}.\n";
             }
 
             str += $"Visit date: {visit.StartTime.ToLongDateString()}.\n";
