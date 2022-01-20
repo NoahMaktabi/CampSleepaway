@@ -2,6 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Persistence;
 using Persistence.Repository;
 using Presentation.MenuSystem.SubMenus;
@@ -15,6 +16,7 @@ namespace Presentation.MenuSystem
         public MainMenu()
         {
             _context = new DataContext();
+            _context.Database.Migrate();
         }
 
         /// <summary>
