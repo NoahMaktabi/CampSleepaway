@@ -28,6 +28,7 @@ namespace Presentation.MenuSystem.SubMenus
                 "Show a specific next of kin by ID",
                 "Add a new next of kin",
                 "Update a next of kin",
+                "Add camper to next of kin",
                 "Return to main menu",
             };
             var menu = new MenuBuilder(prompt, options);
@@ -48,6 +49,9 @@ namespace Presentation.MenuSystem.SubMenus
                     result = await UpdateNextOfKin();
                     break;
                 case 4:
+                    result = await AddCamperToNextOfKin();
+                    break;
+                case 5:
                     return false;
             }
             Console.WriteLine(result);
@@ -87,6 +91,14 @@ namespace Presentation.MenuSystem.SubMenus
             nextOfKin.Email = InputHandler.GetString("Please enter the email of the next of kin:");
 
             return await _handler.UpdateNextOfKin(nextOfKin);
+        }
+
+        private async Task<string> AddCamperToNextOfKin()
+        {
+            var camperId = InputHandler.GetIdFromUser("camper", "add to next of kin");
+            var nextOfKinId = InputHandler.GetIdFromUser("next of kin", "update with a camper");
+
+            return await _handler.AddCamperToNextOfKin(camperId, nextOfKinId);
         }
     }
 }
