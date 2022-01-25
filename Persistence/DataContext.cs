@@ -6,7 +6,11 @@ namespace Persistence
 {
     public class DataContext : DbContext
     {
+        //Noahs connectionString
         private const string ConnString = @"Data Source=LAPTOP-VHEL4P4U\SQLEXPRESS; Initial Catalog=CS_Noah_Maktabi; Integrated Security=true; TrustServerCertificate=True";
+        
+        //Magisterns connectionsString
+        //private const string ConnString = @"Data Source=DESKTOP-T2GL85N\SQLEXPRESS2017; Initial Catalog=CS_Noah_Maktabi; Integrated Security=true; TrustServerCertificate=True";
 
         public DataContext() : base()
         {

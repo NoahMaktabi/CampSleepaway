@@ -21,6 +21,7 @@ namespace Presentation.MenuSystem
         /// </summary>
         private void DisplayOptions()
         {
+            Console.SetWindowSize(120, 70);
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.BackgroundColor = ConsoleColor.Cyan;
             Console.WriteLine(_prompt + "\n");
