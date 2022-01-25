@@ -158,6 +158,22 @@ namespace Application
                 : "There was a problem, the counselor was not added to the cabin.";
         }
 
+        public async Task<string> CheckOutCamper(int camperId, int cabinId)
+        {
+            var cabin = await _repository.FindById(cabinId);
+            if (cabin == null) return 
+                "The cabin was not found in the database";
+            var camper = cabin.Campers.FirstOrDefault(c => c.Id == camperId);
+            if (camper == null) return "The camper was not found in this cabin";
+            await RegisterCamperCheckOut(cabin, camper);
+
+            cabin.Campers.Remove(camper);
+            var result = await _repository.Update(cabin);
+            return result
+                ? "The camper has been checked out"
+                : "There was a problem. No changes has been made";
+        }
+
         private async Task<bool> RegisterCamper(Camper camper, Cabin cabin)
         {
             var registry = new CamperRegistry
@@ -193,5 +209,18 @@ namespace Application
             registry.Notes = "The counselor has been changed to another";
             return await _counselorRegRepository.Update(registry);
         }
+
+        private async Task<bool> RegisterCamperCheckOut(Cabin cabin, Camper camper)
+        {
+            var list = await _camperRegRepository.FindAll();
+            var registry = list.FirstOrDefault(r =>
+                r.CabinId == cabin.Id && r.CamperId == camper.Id && r.CheckOut > DateTime.Now);
+            if (registry == null) return false;
+
+            registry.CheckOut = DateTime.Now;
+            return await _camperRegRepository.Update(registry);
+        }
+
+
     }
 }

@@ -15,9 +15,8 @@ namespace Presentation.Input
         {
             var msg = $"Please enter the ID of the {predicate.ToLower().Trim()} you want to {actionToDo.ToLower().Trim()}.";
             const string invalidMsg = "You did not enter a valid ID. Please enter a positive number";
-            Console.Clear();
             Console.CursorVisible = true;
-            var id = GetIntFromUserInput(msg, invalidMsg, 1, 1000);
+            var id = GetIntFromUserInput(msg, invalidMsg, 1, 10000, false);
             Console.CursorVisible = false;
             return id;
         }
@@ -156,10 +155,12 @@ namespace Presentation.Input
         /// <param name="invalidMsg">Msg to provide in case the input is not a number or not inside the min/max param</param>
         /// <param name="min">Minimum number allowed</param>
         /// <param name="max">Maximum number allowed</param>
+        /// <param name="clearConsole"></param>
         /// <returns>Valid int from the criteria defined in the parameters</returns>
-        public static int GetIntFromUserInput(string msgToUser, string invalidMsg, int min, int max)
+        public static int GetIntFromUserInput(string msgToUser, string invalidMsg, int min, int max, bool clearConsole = true)
         {
-            Console.Clear();
+            if (clearConsole)
+                Console.Clear();
             Console.WriteLine(msgToUser);
             Console.CursorVisible = true;
             var input = Console.ReadLine();
